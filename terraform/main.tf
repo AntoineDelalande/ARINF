@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-3"
+  region = var.AWS_REGION
 }
 
 resource "aws_budgets_budget" "ambroke" {
@@ -21,3 +21,18 @@ resource "aws_budgets_budget" "ambroke" {
   time_unit         = "MONTHLY"
   time_period_start = "2023-09-01_00:00"
 }
+
+module "vpc" {
+  source = "./modules/vpc"
+}
+
+module "lb" {
+  source = "./modules/lb"
+  subnet_ids = module.vpc.subnet_ids
+}
+
+//module "bucket_s3" {
+  //source = "./modules/bucket_s3"
+  //bucket_name = "arinf-bucket"
+  
+//}
