@@ -12,3 +12,10 @@ variable "azs" {
   description = "AZs to use for subnets"
   default     = ["eu-west-3a", "eu-west-3b", "eu-west-3c"]
 }
+
+variable "AWS_AMIS" {
+    type = map
+    default = {
+        default = "ami-00983e8a26e4c9bd9"
+    }
+}

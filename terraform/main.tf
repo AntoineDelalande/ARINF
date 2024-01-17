@@ -26,13 +26,8 @@ module "vpc" {
   source = "./modules/vpc"
 }
 
-module "lb" {
-  source = "./modules/lb"
-  subnet_ids = module.vpc.subnet_ids
-}
 
-//module "bucket_s3" {
-  //source = "./modules/bucket_s3"
-  //bucket_name = "arinf-bucket"
-  
-//}
+##module "lb" {
+  ##source = "./modules/lb"
+  ##subnet_ids = module.vpc.subnets_cidr
+##}
