@@ -93,25 +93,25 @@ resource "aws_route_table_association" "main_rt_association" {
   route_table_id = aws_route_table.main_rt.id
 }
 
-resource "aws_instance" "replica" {
-  count = length(var.subnets_cidr)
-  ami = var.AWS_AMIS["default"]
-  instance_type = "t2.micro"
-  subnet_id = aws_subnet.main_sb[count.index].id
+//resource "aws_instance" "replica" {
+  //count = length(var.subnets_cidr)
+  //ami = var.AWS_AMIS["default"]
+  //instance_type = "t2.micro"
+  //subnet_id = aws_subnet.main_sb[count.index].id
 
-  vpc_security_group_ids = [aws_security_group.main_sg.id]
+  //vpc_security_group_ids = [aws_security_group.main_sg.id]
 
-  #key_name = ""
+  //#key_name = ""
 
-    //user_data = <<-EOF
-		//#!/bin/bash
-        //sudo apt-get update
-		//sudo apt-get install -y apache2
-		//sudo systemctl start apache2
-		//sudo systemctl enable apache2
-		//sudo echo "<h1>Hello devopssec</h1>" > /var/www/html/index.html
-	  //EOF
-  tags = {
-    Name = "ARINF_replica_${count.index}"
-  }
-}
+    ////user_data = <<-EOF
+		////#!/bin/bash
+        ////sudo apt-get update
+		////sudo apt-get install -y apache2
+		////sudo systemctl start apache2
+		////sudo systemctl enable apache2
+		////sudo echo "<h1>Hello devopssec</h1>" > /var/www/html/index.html
+	  ////EOF
+  //tags = {
+    //Name = "ARINF_replica_${count.index}"
+  //}
+//}

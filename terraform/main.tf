@@ -27,7 +27,10 @@ module "vpc" {
 }
 
 
-##module "lb" {
-  ##source = "./modules/lb"
-  ##subnet_ids = module.vpc.subnets_cidr
-##}
+module "lb" {
+  source = "./modules/lb"
+  vpc_id = module.vpc.vpc_id
+  subnet_ids = module.vpc.subnet_ids
+  image_id = module.vpc.image_id
+  security_group_id = module.vpc.sg_id
+}
